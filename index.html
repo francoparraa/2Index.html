@@ -1,1 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="Networking Solutions: soluciones profesionales en telecomunicaciones, redes, fibra óptica, conectividad satelital, servidores y tecnología.">
+<title>Networking Solutions | Tecnología y Conectividad</title>
 
+<style>
+:root {
+  --fondo: #080d18;
+  --panel: #111a2b;
+  --azul: #168cff;
+  --celeste: #55c7ff;
+  --texto: #f4f7fc;
+  --gris: #aab6ca;
+  --borde: rgba(105,160,220,.2);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+.contenedor { width: min(1120px, 90%); margin: auto; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(8,13,24,.96);
+  border-bottom: 1px solid var(--borde);
+  backdrop-filter: blur(12px);
+}
+.nav {
+  min-height: 78px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: .5px;
+}
+.logo-icon {
+  width: 43px;
+  height: 43px;
+  border: 2px solid var(--azul);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--celeste);
+  font-size: 25px;
+  font-weight: bold;
+}
+.logo span { color: var(--celeste); }
+nav { display: flex; gap: 20px; align-items: center; }
+nav a { color: var(--gris); font-size: 14px; }
+nav a:hover { color: var(--celeste); }
+
+.boton {
+  display: inline-block;
+  padding: 13px 21px;
+  border-radius: 8px;
+  background: linear-gradient(110deg, #0878ed, #21a9ff);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #3aabff;
+  transition: .2s;
+}
+.boton:hover { transform: translateY(-2px); filter: brightness(1.12); }
+.boton-secundario {
+  background: transparent;
+  border: 1px solid var(--borde);
+}
+
+.hero {
+  padding: 100px 0 85px;
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(22,140,255,.18), transparent 38%),
+    radial-gradient(ellipse at 10% 90%, rgba(22,140,255,.09), transparent 40%);
+}
+.etiqueta {
+  color: var(--celeste);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+h1 {
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.08;
+  max-width: 800px;
+  margin: 20px 0;
+  letter-spacing: -1.8px;
+}
+h1 span {
+  background: linear-gradient(90deg, #48baff, #8bdfff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p {
+  color: var(--gris);
+  max-width: 650px;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.botones { display: flex; flex-wrap: wrap; gap: 12px; }
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  margin-top: 65px;
+  max-width: 800px;
+}
+.indicador {
+  padding: 17px;
+  border-left: 2px solid var(--azul);
+  background: rgba(17,26,43,.65);
+}
+.indicador strong { display: block; font-size: 16px; }
+.indicador small { color: var(--gris); }
+
+section { padding: 80px 0; }
+.titulo-seccion { margin-bottom: 35px; }
+.titulo-seccion h2 { font-size: clamp(28px,4vw,42px); margin: 8px 0; }
+.titulo-seccion p { color: var(--gris); max-width: 680px; }
+
+.servicios {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 18px;
+}
+.tarjeta {
+  background: linear-gradient(145deg, #121d30, #0d1422);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 25px;
+  transition: .25s;
+}
+.tarjeta:hover {
+  transform: translateY(-4px);
+  border-color: rgba(65,177,255,.65);
+}
+.icono {
+  width: 49px;
+  height: 49px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(22,140,255,.13);
+  border: 1px solid var(--borde);
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+.tarjeta h3 { font-size: 19px; margin-bottom: 10px; }
+.tarjeta p { color: var(--gris); font-size: 14px; }
+.tarjeta ul { list-style: none; margin-top: 15px; }
+.tarjeta li { color: var(--gris); font-size: 13px; margin-top: 7px; }
+.tarjeta li::before { content: "✓ "; color: var(--celeste); }
+
+.destacado {
+  background: linear-gradient(120deg, rgba(22,140,255,.13), rgba(17,26,43,.65));
+  border-top: 1px solid var(--borde);
+  border-bottom: 1px solid var(--borde);
+}
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+.dos-columnas h2 { font-size: clamp(29px,4vw,42px); line-height: 1.2; margin: 12px 0 18px; }
+.dos-columnas p { color: var(--gris); margin-bottom: 15px; }
+.lista { display: grid; gap: 13px; }
+.lista div {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 15px;
+}
+.lista strong { display: block; }
+.lista span { color: var(--gris); font-size: 14px; }
+
+.contacto-caja {
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 35px;
+  background: radial-gradient(ellipse at top right, rgba(22,140,255,.13), transparent 60%), var(--panel);
+}
+.contacto-caja h2 { font-size: clamp(27px,4vw,40px); margin: 10px 0; }
+.contacto-caja p { color: var(--gris); margin-bottom: 25px; }
+
+footer {
+  border-top: 1px solid var(--borde);
+  padding: 28px 0;
+  color: var(--gris);
+  font-size: 13px;
+}
+.footer-flex { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+
+@media(max-width:850px) {
+  nav { gap: 12px; }
+  nav a { font-size: 12px; }
+  .servicios { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+  .nav { min-height: 70px; flex-wrap: wrap; padding: 12px 0; }
+  .logo { font-size: 15px; }
+  .logo-icon { width: 38px; height: 38px; }
+  nav { width: 100%; justify-content: space-between; padding-bottom: 5px; }
+  nav a { font-size: 12px; }
+  .hero { padding: 65px 0 55px; }
+  .hero p { font-size: 16px; }
+  .indicadores { grid-template-columns: 1fr; margin-top: 38px; }
+  section { padding: 58px 0; }
+  .servicios { grid-template-columns: 1fr; }
+  .dos-columnas { grid-template-columns: 1fr; gap: 25px; }
+  .contacto-caja { padding: 25px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="contenedor nav">
+    <a class="logo" href="#inicio" aria-label="Networking Solutions, inicio">
+      <div class="logo-icon">N</div>
+      <div>NETWORKING <span>SOLUTIONS</span></div>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="contenedor">
+    <div class="etiqueta">Tecnología · Redes · Innovación</div>
+    <h1>Conectamos tecnología.<br><span>Impulsamos soluciones.</span></h1>
+    <p>
+      Soluciones tecnológicas para hogares, empresas y proyectos.
+      Diseñamos, instalamos y optimizamos redes y sistemas de conectividad
+      para que todo funcione de forma eficiente y confiable.
+    </p>
+    <div class="botones">
+      <a class="boton" href="#servicios">Conocé nuestros servicios ↗</a>
+      <a class="boton boton-secundario" href="#contacto">Solicitar asesoramiento</a>
+    </div>
+
+    <div class="indicadores">
+      <div class="indicador">
+        <strong>Conectividad</strong>
+        <small>Redes y enlaces</small>
+      </div>
+      <div class="indicador">
+        <strong>Infraestructura</strong>
+        <small>Instalación y soporte</small>
+      </div>
+      <div class="indicador">
+        <strong>Innovación</strong>
+        <small>Soluciones digitales</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <div class="etiqueta">Qué hacemos</div>
+      <h2>Soluciones para cada conexión</h2>
+      <p>Servicios tecnológicos integrales, desde la infraestructura de red hasta las herramientas digitales.</p>
+    </div>
+
+    <div class="servicios">
+      <article class="tarjeta">
+        <div class="icono">⌘</div>
+        <h3>Redes y FTTH</h3>
+        <p>Diseño, instalación y mantenimiento de infraestructura de redes y fibra óptica.</p>
+        <ul>
+          <li>Redes internas y cableado</li>
+          <li>Despliegue y diseño FTTH</li>
+          <li>Configuración de equipos de red</li>
+        </ul>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">📡</div>
+        <h3>Radioenlaces y Starlink</h3>
+        <p>Soluciones para ampliar la conectividad en hogares, empresas y zonas alejadas.</p>
+        <ul>
+          <li>Instalación de antenas</li>
+          <li>Conectividad satelital</li>
+          <li>Ampliación de cobertura Wi-Fi</li>
+        </ul>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">▤</div>
+        <h3>Servidores y sistemas</h3>
+        <p>Configuración y mantenimiento de infraestructura informática para organizaciones.</p>
+        <ul>
+          <li>Servidores de área local</li>
+          <li>Mantenimiento y diagnóstico</li>
+          <li>Administración de sistemas</li>
+        </ul>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">◉</div>
+        <h3>Cámaras de seguridad</h3>
+        <p>Instalación de sistemas de videovigilancia para mejorar el control y la seguridad.</p>
+        <ul>
+          <li>Instalación de cámaras IP</li>
+          <li>Configuración de equipos</li>
+          <li>Acceso y visualización remota</li>
+        </ul>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">⌨</div>
+        <h3>Desarrollo digital</h3>
+        <p>Creación de herramientas digitales para acompañar el crecimiento de tu proyecto.</p>
+        <ul>
+          <li>Páginas web</li>
+          <li>Aplicaciones de software</li>
+          <li>Soluciones con bases de datos</li>
+        </ul>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">₿</div>
+        <h3>Criptoactivos y seguridad digital</h3>
+        <p>Capacitación introductoria para comprender los activos digitales y proteger tus billeteras.</p>
+        <ul>
+          <li>Conceptos de trading y mercado</li>
+          <li>Creación y gestión de wallets</li>
+          <li>Custodia y prevención de estafas</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="destacado" id="nosotros">
+  <div class="contenedor dos-columnas">
+    <div>
+      <div class="etiqueta">Sobre nosotros</div>
+      <h2>Tecnología aplicada a necesidades reales.</h2>
+      <p>
+        En Networking Solutions buscamos ofrecer soluciones prácticas
+        en conectividad, infraestructura y tecnología digital.
+      </p>
+      <p>
+        Cada proyecto requiere comprender las necesidades del cliente,
+        evaluar las alternativas y desarrollar una solución adecuada.
+      </p>
+      <a class="boton" href="#contacto">Hablemos de tu proyecto</a>
+    </div>
+
+    <div class="lista">
+      <div>
+        <strong>01. Análisis</strong>
+        <span>Evaluamos las necesidades y condiciones de cada proyecto.</span>
+      </div>
+      <div>
+        <strong>02. Planificación</strong>
+        <span>Proponemos una solución técnica acorde al objetivo.</span>
+      </div>
+      <div>
+        <strong>03. Implementación</strong>
+        <span>Trabajamos en la instalación, configuración y puesta en marcha.</span>
+      </div>
+      <div>
+        <strong>04. Soporte</strong>
+        <span>Orientación técnica para el funcionamiento y mantenimiento.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contenedor">
+    <div class="contacto-caja">
+      <div class="etiqueta">Contacto</div>
+      <h2>¿Tenés un proyecto en mente?</h2>
+      <p>
+        Contanos qué necesitás y podremos evaluar una solución
+        para tu hogar, empresa o infraestructura de red.
+      </p>
+      <a class="boton" href="mailto:CONTACTO@TUDOMINIO.COM?subject=Consulta%20-%20Networking%20Solutions">
+        Enviar consulta por correo ↗
+      </a>
+      <p style="font-size:12px;margin-top:18px;margin-bottom:0">
+        El correo de contacto debe actualizarse con la dirección oficial de la empresa.
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="contenedor footer-flex">
+    <div>© <span id="anio"></span> Networking Solutions. Todos los derechos reservados.</div>
+    <div>Tecnología e innovación.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("anio").textContent = new Date().getFullYear();
+</script>
+
+</body>
+          </html>
